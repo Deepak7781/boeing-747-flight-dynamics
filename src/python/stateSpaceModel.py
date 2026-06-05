@@ -13,8 +13,10 @@ def stateSpace(ac):
     Dlon = np.zeros((4,1));
 
     lonSS = control.ss(Alon, Blon, Clon, Dlon)
-    # lonSS.StateName = {'u[m/s]', '\alpha[rad]', 'q[rad/s]', '\theta[rad]'}
-    # lonSS.InputName = {'\delta_e[rad]'};
-    # lonSS.OutputName = {'u[m/s]', '\alpha[rad]', 'q[rad/s]', '\theta[rad]'}
+    lonSS.state_labels = ['u[m/s]', 'alpha[rad]', 'q[rad/s]', 'theta[rad]']
+
+    lonSS.input_labels = ['delta_e[rad]']
+
+    lonSS.output_labels = ['u[m/s]', 'alpha[rad]', 'q[rad/s]', 'theta[rad]']
 
     return lonSS
