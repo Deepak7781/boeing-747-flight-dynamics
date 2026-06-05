@@ -19,4 +19,24 @@ def stateSpace(ac):
 
     lonSS.output_labels = ['u[m/s]', 'alpha[rad]', 'q[rad/s]', 'theta[rad]']
 
-    return lonSS
+    Alat = np.array([[ac.Ybeta/ac.tas, 0, -1, ac.g/ac.tas],
+            [ac.Lbeta, ac.Lp, ac.Lr, 0], 
+            [ac.Nbeta, ac.Np, ac.Nr, 0],
+            [0, 1, 0, 0]])
+    
+    Blat = np.array([[ac.YdelA/ac.tas,ac.YdelR/ac.tas],
+            [ac.LdelA, ac.LdelR],
+            [ac.NdelA, ac.NdelR],
+            [0,0]])
+
+    Clat = np.eye(4);
+
+    Dlat = np.zeros((4,2));
+
+    latSS = control.ss(Alat, Blat, Clat, Dlat);
+    latSS.state_labels = ['v[m/s]', 'p[rad/s]', 'r[rad/s]', 'phi[rad]']
+
+    latSS.input_labels = ['delta_a[rad]', 'delta_r[rad]']
+
+    latSS.output_labels = ['v[m/s]', 'p[rad/s]', 'r[rad/s]', 'phi[rad]']
+    return lonSS, latSS
