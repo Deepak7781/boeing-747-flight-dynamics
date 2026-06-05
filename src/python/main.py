@@ -1,5 +1,8 @@
 from boeing747Params import Params
-
+from stateSpaceModel import stateSpace
 p = Params()
 
-print(p.alt)
+lonSS = stateSpace(p)
+print(lonSS)
+
+
