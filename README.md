@@ -23,7 +23,7 @@ Using the framework of **small disturbance theory**, the aircraft equations of m
 - Study the natural stability characteristics of the Boeing 747
 - Implement the analysis in:
   - MATLAB
-  - Simulink
+  - Python
 
 ---
 
